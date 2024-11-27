@@ -34,7 +34,7 @@ export default function FormInput(
             </div>
             {
                 errors.map( (error, idx) => (
-                    <span key={idx} className="text-red-500 text-sm block mt-3">{error}</span>
+                    <span key={idx} className="text-red-500 text-sm block first-of-type:mt-3">{error}</span>
                 ))
             }
         </div>   
