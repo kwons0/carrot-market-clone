@@ -15,6 +15,6 @@ export default function Button({text}: ButtonProps){
                 h-11  w-[100%] block rounded-md
                 ${pending ? 'bg-gray-300 text-gray-400 ' : 'bg-[--main] text-white '}
             `}
-        >{pending? 'Loading...' : text}</button>
+        >{pending? '로딩 중...' : text}</button>
     )
 }

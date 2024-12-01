@@ -1,6 +1,6 @@
 "use server"
 
-import { CHECK_PASSWORD, EMAIL_REGAX } from "@/components/constants";
+import * as C from '@/lib/constants';
 import db from "@/lib/db";
 import getSession from "@/lib/session";
 import bcrypt from "bcrypt"
@@ -18,14 +18,14 @@ const checkEmailExists = async(email: string) => {
 const formSchema = z.object({
     email: z
         .string().email().toLowerCase()
-        .regex(EMAIL_REGAX, "이메일 주소를 정확하게 입력해주세요.")
+        .regex(C.EMAIL_REGAX, "이메일 주소를 정확하게 입력해주세요.")
         .refine( checkEmailExists, "존재하지 않는 이메일입니다."),
     username: z
-        .string().min(5, "이름을 5자 이상 입력해주세요."),
+        .string().min(C.USERNAME_MIN_LENGTH, C.USERNAME_MIN_LENGTH_ERROR),
     password: z
         .string()
-        .min(10, "비밀번호를 10자 이상 입력해주세요.")
-        .refine( CHECK_PASSWORD,"비밀번호는 적어도 하나의 숫자를 포함해야 합니다."),
+        .min(C.PASSWORD_MIN_LENGTH, C.PASSWORD_MIN_LENGTH_ERROR)
+        .refine( C.CHECK_PASSWORD, "비밀번호는 적어도 하나의 숫자를 포함해야 합니다."),
 })
 
 export async function login( prevState: any, formData: FormData){
