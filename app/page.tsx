@@ -1,46 +1,24 @@
-"use client"
-
-import FormBtn from "@/components/form-btn";
-import FormInput from "@/components/form-input";
-import { useFormState } from "react-dom";
-import { handleForm } from "./actions";
-import { EMAIL_ICON, USER_ICON, PASSWORD_ICON, SUCCESS_ICON } from "@/lib/svg";
-
-type FieldErrors = {
-  email?: string[];
-  username?: string[];
-  password?: string[];
-};
+import Button from "@/components/button";
+import { LOGO } from "@/components/svg";
+import Link from "next/link";
 
 export default function Home() {
-  
-  const arr={ errors: [], success: false };
-  const [state, trigger] = useFormState(handleForm, arr)
-  
-  const getFieldErrors = (field: keyof FieldErrors) => {
-    if (Array.isArray(state.errors) || !state.errors?.fieldErrors) {
-      return [];
-    }
-    return state.errors.fieldErrors[field] || [];
-  };
 
   return (
-    <div className="flex flex-col gap-2 py-11">
-      <div className="text-center text-xl">🔥</div> 
-      <form className="flex flex-col gap-4" action={trigger}>
-        <FormInput name='email' type="email" placeholder="Email" required icon={EMAIL_ICON} 
-          errors={getFieldErrors("email")}/>
-        <FormInput name='username' type="text" placeholder="Usename" required icon={USER_ICON}
-          errors={getFieldErrors("username")}/>
-        <FormInput name='password' type="password" placeholder="Password" required 
-          errors={getFieldErrors("password")} 
-          
-          icon={PASSWORD_ICON}/>
-        <FormBtn text="Login"/>
-        { state?.success ? 
-          <div className="bg-green-400 w-full p-5 flex items-center rounded-xl">{SUCCESS_ICON} Welcome back!</div> 
-        : null }
-      </form>
+    <div className="relative h-screen *:text-center">
+      <article className="flex flex-col items-center justify-center min-h-screen">
+        <h1 className="text-center size-32"><LOGO classname="w-[100%] h-[100%]"/></h1>
+        <div className="mt-5 mb-2 text-xl font-bold">당신 근처의 당근마켓</div>
+        <p className="text-sm leading-tight">중고 거래부터 동네 정보까지,<br/>지금 내 동네를 선택하고 시작해보세요!</p>
+      </article>
+      
+      <div className="absolute left-[50%] bottom-10 translate-x-[-50%] w-[100%]">
+        <Link href="/create-account" className=""><Button text="시작하기" /></Link>
+        <div className="mt-3">
+          <span className="text-gray-400 text-sm">이미 계정이 있나요?</span>
+          <Link href="/log-in" className="text-[--main] underline ml-1 text-sm">로그인</Link>
+        </div>
+      </div>
     </div>
   );
 }

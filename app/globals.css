@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --main: #FF6F0F;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,7 +25,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-    padding: 50px;
+  padding: 1rem;
 }
 
 @layer utilities {
