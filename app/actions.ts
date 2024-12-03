@@ -3,7 +3,6 @@
 import db from "@/lib/db"
 
 export async function getMoreTweets(page: number){
-    const totalTweets = await db.tweet.count();
     const tweets = await db.tweet.findMany({
         select: {
             id: true,
@@ -17,5 +16,15 @@ export async function getMoreTweets(page: number){
             created_at: "desc"
         }
     })
-    return {tweets, totalTweets};
+    const firstTweet = await db.tweet.findFirst({
+        select: { id: true },
+        orderBy: { created_at: "asc" },
+    });
+
+    const lastTweet = await db.tweet.findFirst({
+        select: { id: true },
+        orderBy: { created_at: "desc" },
+    });
+
+    return {tweets, firstTweet, lastTweet};
 }
