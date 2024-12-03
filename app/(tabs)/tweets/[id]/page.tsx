@@ -3,6 +3,7 @@ import { formatToTimeAgo } from "@/lib/utils";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import * as SVG from "../../../../components/svg";
+import Link from "next/link";
 
 async function getTweet(id: number){
     const tweet = await db.tweet.findUnique({
@@ -37,6 +38,7 @@ export default async function TweetDetail(
 
     return (
         <div className="">
+            <Link href="/"><SVG.BACK_ICON classname="size-5 mb-5"/></Link>
             <ul className="*:leading-tight w-full flex">
                 <li className="relative flex-none size-10 rounded-md overflow-hidden mr-2">
                     {
