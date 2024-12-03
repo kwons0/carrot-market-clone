@@ -12,7 +12,7 @@ export default function CreateAccount(){
 
   return(
     <div className="flex flex-col gap-2 py-11">
-      <Link href="/"><BACK_ICON classname="size-5 mb-5"/></Link>
+      <Link href="/browse"><BACK_ICON classname="size-5 mb-5"/></Link>
       <h2 className="leading-tight text-xl mb-5">안녕하세요!<br/>이메일로 가입해주세요.</h2>
       <form className="flex flex-col gap-4" action={trigger}>
         <Input name='email' type="email" placeholder="이메일 주소" required icon={EMAIL_ICON} 

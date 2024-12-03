@@ -1,39 +1,21 @@
 "use server"
 
-import { z } from "zod";
+import db from "@/lib/db"
 
-function checkMail( email: string ){
-    return email.includes('@zod.com')
-}
-
-function checkPassword( password: string ){
-    return /\d/.test(password)
-}
-
-const formSchema = z.object({
-    email: z
-        .string().email().toLowerCase()
-        .refine( checkMail, "Only @zod.com emails are allowed."),
-    username: z
-        .string().min(5, "Username should be at least 5 characters long."),
-    password: z
-        .string()
-        .min(10, "Password should be at least 10 characters long.")
-        .refine( checkPassword,"Password should contain at least one number (123456789)."),
-})
-
-export async function handleForm( prevState: any, formData: FormData){
-    const data = {
-        email: formData.get('email'),
-        username: formData.get('username'),
-        password: formData.get('password'),
-    }
-    const result = formSchema.safeParse(data)
-    
-    if( !result.success ){
-        return { errors: result.error.flatten(), success: false };
-    }else{
-        return { errors: [], success: true };
-    }
-
+export async function getMoreTweets(page: number){
+    const totalTweets = await db.tweet.count();
+    const tweets = await db.tweet.findMany({
+        select: {
+            id: true,
+            tweet: true,
+            created_at: true,
+            user: true,
+        },
+        skip: page * 5,
+        take: 5,
+        orderBy: {
+            created_at: "desc"
+        }
+    })
+    return {tweets, totalTweets};
 }

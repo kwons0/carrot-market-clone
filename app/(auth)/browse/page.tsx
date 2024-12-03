@@ -2,7 +2,7 @@ import Button from "@/components/button";
 import { LOGO } from "@/components/svg";
 import Link from "next/link";
 
-export default function Home() {
+export default function Browse() {
 
   return (
     <div className="relative h-screen *:text-center">
