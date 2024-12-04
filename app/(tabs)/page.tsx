@@ -1,6 +1,8 @@
+import { PLUS_ICON } from "@/components/svg";
 import TweetList from "@/components/tweet-list";
 import db from "@/lib/db";
 import { Prisma } from "@prisma/client";
+import Link from "next/link";
 
 async function getInitialTweet(){
   const tweets = await db.tweet.findMany({
@@ -26,6 +28,10 @@ export default async function Home() {
   return (
     <div>
       <TweetList initialTweets={initialTweets}/>
+      <Link href="/tweets/add"
+        className="bg-orange-500 flex items-center justify-center rounded-md fixed bottom-20 right-8 text-white transition-colors py-1 px-2 hover:bg-orange-400">
+        <PLUS_ICON classname="size-4"/><span className="text-sm">글쓰기</span>
+      </Link>
     </div>
   );
 }
