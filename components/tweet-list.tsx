@@ -3,7 +3,7 @@
 import { InitialTweets } from "@/app/(tabs)/page"
 import { useEffect, useRef, useState } from "react"
 import ListTweet from "./list-tweet"
-import { getMoreTweets } from "@/app/actions"
+import { getMoreTweets } from "@/app/(tabs)/actions"
 
 interface TweetListProps {
   initialTweets: InitialTweets

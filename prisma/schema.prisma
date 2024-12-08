@@ -19,6 +19,7 @@ model User {
 
   tweets      Tweet[]
   likes       Like[]
+  response    Response[]
 }
 
 model Tweet {
@@ -29,20 +30,34 @@ model Tweet {
 
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId Int
+
   likes       Like[]
+  response    Response[]
 
   @@index([userId])
 }
 
 model Like {
-  id          Int      @id @default(autoincrement())
   created_at  DateTime @default(now())
 
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      Int
 
-  tweet       Tweet   @relation(fields: [tweetId], references: [id])
+  tweet       Tweet   @relation(fields: [tweetId], references: [id], onDelete: Cascade)
   tweetId     Int
 
-  @@unique([userId, tweetId])
+  @@unique([tweetId, userId])
 }
+
+model Response {
+  id          Int      @id @default(autoincrement())
+  created_at  DateTime @default(now())
+  comment     String
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      Int
+
+  tweet       Tweet   @relation(fields: [tweetId], references: [id], onDelete: Cascade)
+  tweetId     Int
+}
+

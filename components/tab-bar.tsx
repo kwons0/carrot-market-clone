@@ -13,7 +13,7 @@ export default function TabBar(){
                     after:content-[''] after:block after:w-[1px] after:h-6 after:absolute after:right-0 after:top-[50%] after:translate-y-[-50%] after:bg-gray-200
                 "
             >
-                { pathname === "/"
+                { pathname === "/" || pathname.includes('/tweets')
                     ? <SVG.HOME_FILL_ICON classname="size-6"/>
                     : <SVG.HOME_STROKE_ICON classname="size-6"/> }
                 <span className="text-xs">홈</span>

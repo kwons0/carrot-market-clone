@@ -18,10 +18,14 @@ interface ListTweetProps {
     };
     created_at: Date;
     tweet: string;
+    _count: {
+        response: number,
+        likes: number,
+    }
 }
 
 export default function ListTweet(
-    {id, user, created_at, tweet}: ListTweetProps
+    {id, user, created_at, tweet, _count}: ListTweetProps
 ){
     return (
         <Link href={`/tweets/${id}`}
@@ -49,8 +53,14 @@ export default function ListTweet(
                     {tweet}
                 </li>
                 <li className="flex items-center my-1">
-                    <p className="flex items-center mr-3"><SVG.COMMENT_ICON classname="size-4 mr-1"/><span className="text-xs text-gray-500">2</span></p>
-                    <p className="flex items-center"><SVG.HEART_STOKE_ICON classname="size-4 mr-1"/><span className="text-xs text-gray-500">5</span></p>
+                    <p className="flex items-center mr-3">
+                        <SVG.COMMENT_ICON classname="size-4 mr-1"/>
+                        <span className="text-xs text-gray-500">{_count.response}</span>
+                    </p>
+                    <p className="flex items-center">
+                        <SVG.HEART_STOKE_ICON classname="size-4 mr-1"/>
+                        <span className="text-xs text-gray-500">{_count.likes}</span>
+                    </p>
                 </li>
             </ul>
         </Link>

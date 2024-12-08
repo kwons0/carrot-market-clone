@@ -36,23 +36,24 @@ export default function AddTweet(){
     return(
         <div>
             <form action={action}>
-            <div className="flex justify-between items-center mt-2">
-                <Link href="/">취소</Link>
-                <button 
-                    disabled={!isTweetValid || pending}
-                    className="bg-[--main] text-white px-3 py-1 text-sm rounded-2xl
-                        disabled:bg-[#ff6f0f5e]
-                    "
-                >
-                    { pending ? "게시중.." : "게시하기"}
-                </button>
-            </div>
-                <TweetBox name="tweet" type="text" required 
-                    placeholder="무슨 일이 일어나고 있나요?"
-                    onInputChange={setTweet}
-                    errors={state?.fieldErrors.tweet}
-                />
+                <div className="flex justify-between items-center mt-2">
+                    <Link href="/">취소</Link>
+                    <button 
+                        disabled={!isTweetValid || pending}
+                        className="bg-[--main] text-white px-3 py-1 text-sm rounded-2xl
+                            disabled:bg-[#ff6f0f5e]
+                        "
+                    >
+                        { pending ? "게시중.." : "게시하기"}
+                    </button>
+                </div>
+                    <TweetBox name="tweet" type="text" required 
+                        placeholder="무슨 일이 일어나고 있나요?"
+                        onInputChange={setTweet}
+                        errors={state?.fieldErrors.tweet}
+                    />
             </form>
+            
         </div>
     )
 }

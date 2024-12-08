@@ -11,6 +11,12 @@ async function getInitialTweet(){
       tweet: true,
       created_at: true,
       user: true,
+      _count: {
+        select: {
+          response: true,
+          likes: true,
+        }
+      }
     },
     take: 5,
     orderBy: {
@@ -27,7 +33,7 @@ export default async function Home() {
 
   return (
     <div>
-      <TweetList initialTweets={initialTweets}/>
+      <TweetList initialTweets={initialTweets} />
       <Link href="/tweets/add"
         className="bg-orange-500 flex items-center justify-center rounded-md fixed bottom-20 right-8 text-white transition-colors py-1 px-2 hover:bg-orange-400">
         <PLUS_ICON classname="size-4"/><span className="text-sm">글쓰기</span>
