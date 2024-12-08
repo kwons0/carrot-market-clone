@@ -16,8 +16,6 @@ export default function AddCommentForm({tweetId} : AddCommentFormProps){
 
     const [state, action] = useFormState(uploadComment, null);
 
-    console.log( state )
-
     return(
         <>
             <form action={action} className="my-2 flex items-center *:text-sm">

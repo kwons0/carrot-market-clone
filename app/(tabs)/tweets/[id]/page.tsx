@@ -111,7 +111,7 @@ export default async function TweetDetail(
             </div>
             <div><Comments tweetId={id}/></div>
             <div>
-                <AddComment tweetId={tweet.id} tweetUser={tweet.user.username}/>
+                <AddComment tweetId={id} tweetUser={tweet.user.username}/>
             </div>
         </div>
     )

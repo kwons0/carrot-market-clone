@@ -27,7 +27,6 @@ interface CommentsProps {
 }
 
 export default async function Comments({tweetId}: CommentsProps){
-    console.log( tweetId )
     const comments = await getCommnet(tweetId);
     return(
         <ul className="pb-32">
