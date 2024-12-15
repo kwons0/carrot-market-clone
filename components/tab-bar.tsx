@@ -18,7 +18,7 @@ export default async function TabBar(){
     const user = await getUser();
     
     return(
-        <div className="flex items-center justify-between fixed bottom-0 left-0 w-full border-t-[1px] border-[--brown4] bg-[--background]">
+        <div className="flex items-center justify-between fixed bottom-0 left-[50%] translate-x-[-50%] w-full max-w-screen-sm mx-auto border-t-[1px] border-[--brown4] bg-[--background]">
             <TabContents username={user?.username}/>
         </div>
     )

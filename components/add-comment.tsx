@@ -29,7 +29,7 @@ export default async function AddComment({ tweetUser, tweetId }: UserProps){
     const user = await getUser();
 
     return(
-        <div className="fixed bottom-14 left-0 border-t border-[--brown4] w-full py-2 px-4 bg-[--background]">
+        <div className="fixed bottom-14 left-[50%] translate-x-[-50%] border-t border-[--brown4] w-full max-w-screen-sm mx-auto py-2 px-4 bg-[--background]">
             <ul className="flex items-center">
                 <li className="relative flex-none size-7 rounded-md overflow-hidden mr-2">
                     {
