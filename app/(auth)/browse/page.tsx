@@ -28,7 +28,7 @@ export default function Browse() {
             <span className="text-sm">이미 계정이 있나요?</span>
             <Link href="/log-in" className="text-[--main] underline ml-1 text-sm">로그인</Link>
           </div>
-        </div>
+        </div> 
       </article>
       
       
