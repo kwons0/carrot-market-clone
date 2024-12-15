@@ -13,7 +13,7 @@
 /.next/
 /out/
 
-# production
+# tweetion
 /build
 
 # misc
@@ -27,6 +27,8 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
+.env.development.local
 
 # vercel
 .vercel
@@ -34,5 +36,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-.env
+*.db
+*.db-journal
