@@ -1,5 +1,5 @@
 import Button from "@/components/button";
-import { LOGO, MOUNTAIN_FLAG_ICON, RIGHT_ARROW_ICON } from "@/components/svg";
+import { MOUNTAIN_FLAG_ICON, RIGHT_ARROW_ICON } from "@/components/svg";
 import Image from "next/image";
 import Link from "next/link";
 

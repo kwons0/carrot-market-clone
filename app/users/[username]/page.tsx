@@ -9,7 +9,7 @@ import TabBar from "@/components/tab-bar";
 import { redirect } from "next/navigation";
 
 
-export async function getIsOwner(
+async function getIsOwner(
     userId: number
 ){
     const session = await getSession();
