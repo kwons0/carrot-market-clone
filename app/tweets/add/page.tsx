@@ -3,30 +3,9 @@
 import Link from "next/link"
 import { useFormState, useFormStatus } from "react-dom"
 import { uploadTweet } from "./actions"
-import { InputHTMLAttributes, useState } from "react";
+import { useState } from "react";
 import { ADD_PHOTO_ICON } from "@/components/svg";
-import TabBar from "@/components/tab-bar";
-
-interface TweetProps {
-    errors?: string[];
-    name: string;
-    onInputChange: (value: string) => void;
-}
-
-export function TweetBox({
-    name, errors = [], onInputChange, ...rest
-}: TweetProps & InputHTMLAttributes<HTMLTextAreaElement> ){
-    return(
-        <>
-            <textarea
-                name={name} 
-                onChange={(e) => onInputChange(e.target.value)} 
-                className="w-full mt-6 focus:outline-none bg-[--background] min-h-[80vh] placeholder:text-[--brown3]"
-                {...rest}
-            />
-        </>
-    )
-}
+import TweetBox from "@/components/tweet-box";
 
 export default function AddTweet(){
     
