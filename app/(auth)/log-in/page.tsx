@@ -12,7 +12,7 @@ export default function Login() {
   const [state, trigger] = useFormState(login, null)
 
   return (
-    <div className="flex flex-col gap-2 py-11">
+    <div className="flex flex-col gap-2 py-11 min-h-screen p-[1rem] bg-[url('/img/asset/login-bg2.jpg')] bg-cover">
       <Link href="/browse"><BACK_ICON classname="size-5 mb-5"/></Link>
       <h2 className="leading-tight text-xl mb-5">안녕하세요!<br/>이메일로 로그인해주세요.</h2>
       <form className="flex flex-col gap-4" action={trigger}>

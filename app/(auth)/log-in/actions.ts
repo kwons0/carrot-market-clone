@@ -10,7 +10,7 @@ import { z } from "zod";
 const checkEmailExists = async(email: string) => {
     const user = await db.user.findUnique({
         where: { email },
-        select: { id: true }
+        select: { id: true, }
     })
     return Boolean(user)
 }
@@ -49,7 +49,7 @@ export async function login( prevState: any, formData: FormData){
             const session = await getSession();
             session.id = user!.id;
             await session.save();
-            redirect('/profile')
+            redirect('/')
         }else{
             return {
                 fieldErrors: {

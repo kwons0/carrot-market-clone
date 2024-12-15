@@ -1,4 +1,3 @@
-import { LOGO } from "@/components/svg";
 import db from "@/lib/db";
 import getSession from "@/lib/session"
 import { notFound, redirect } from "next/navigation";
@@ -28,7 +27,6 @@ export default async function Profile(){
 
     return(
         <div className="py-11">
-            <LOGO classname="size-14 mb-5"/>
             <h2 className="leading-tight text-xl mb-5">안녕하세요,<br/>{user?.username}님</h2>
             <form action={logout}>
                 <button className="underline text-gray-500 text-sm">로그아웃</button>

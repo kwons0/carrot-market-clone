@@ -9,52 +9,9 @@ import AddComment from "@/components/add-comment";
 import LikeButton from "@/components/like-button";
 import getSession from "@/lib/session";
 import { unstable_cache as nextCache } from "next/cache";
+import Backbutton from "@/components/backbutton";
+import { getLikeStatus, getTweet } from "./actions";
 
-async function getTweet(id: number){
-    const tweet = await db.tweet.findUnique({
-        where: { id },
-        include: {
-            user: {
-                select: {
-                    id: true,
-                    created_at: true,
-                    updated_at: true,
-                    username: true,
-                    password: true,
-                    email: true,
-                    bio: true,
-                    avatar: true,
-                }
-            },
-            _count:{
-                select: {
-                    response: true,
-                }
-            }
-        }
-    })
-    return tweet;
-}
-
-
-async function getLikeStatus(tweetId: number){
-    const session = await getSession()
-    const isLiked = await db.like.findFirst({
-        where: {
-            tweetId,
-            userId: session.id!,
-        }
-    })
-    const likeCount = await db.like.count({
-        where: {
-            tweetId
-        }
-    })
-    return {
-        likeCount, 
-        isLiked: Boolean(isLiked)
-    }
-}
 
 function getCachedLikeStatus(tweetId: number){
     const cachedOperation = nextCache(getLikeStatus, ["proudct-like-status"], {
@@ -76,33 +33,51 @@ export default async function TweetDetail(
     const {likeCount, isLiked} = await getCachedLikeStatus(id);
 
     return (
-        <div>
-            <Link href="/"><SVG.BACK_ICON classname="size-5 mb-5"/></Link>
+        <div className="p-[1rem]">
+            <Backbutton/>
             <div>
-                <ul className="*:leading-tight w-full flex">
-                    <li className="relative flex-none size-10 rounded-md overflow-hidden mr-2">
-                        {
-                            tweet.user.avatar
-                            ? <Image fill src={tweet.user.avatar} alt={tweet.user.username} className="object-cover"/>
-                            : <SVG.PROFILE_ICON classname=""/>
-                        }
-                    </li>
-                    <li className="*:text-sm flex-1
-                    ">
-                        <p className="pr-2 font-semibold">{tweet.user.username}</p>
-                        <span className="pr-3 text-gray-400
-                            relative after:block; after:content-[''] 
-                            after:size-[2px] after:rounded-full after:absolute after:right-1 after:top-[50%] after:translate-y-[-50%] after:bg-gray-400
+                <div className="flex justify-between items-center">
+                    <ul className="*:leading-tight w-full flex">
+                        <li className="relative flex-none size-10 rounded-md overflow-hidden mr-2">
+                            <Link href={`/users/${tweet.user.username}`}>
+                                {
+                                    tweet.user.avatar
+                                    ? <Image fill src={tweet.user.avatar} alt={tweet.user.username} className="object-cover"/>
+                                    : <SVG.PROFILE_ICON classname=""/>
+                                }
+                            </Link>
+                        </li>
+                        <li className="flex-1
                         ">
-                        {tweet.user.email}</span>
-                    </li>
-                </ul>
-                <div className="text-sm py-6">{tweet.tweet}</div>
-                <div className="text-gray-400 text-xs">{formatToTimeAgo(tweet.created_at.toString())}</div>
-                <div className="flex items-center my-4">
+                            <p className="pr-2 font-semibold">{tweet.user.username}</p>
+                            <span className="pr-3 text-[--brown3] text-[13px]
+                                relative after:block; after:content-[''] 
+                                after:size-[2px] after:rounded-full after:absolute after:right-1 after:top-[50%] after:translate-y-[-50%] after:bg-[--brown3]
+                            ">
+                            {tweet.user.email}</span>
+                            <span className="text-[--brown3] text-[13px]">{formatToTimeAgo(tweet.created_at.toString())}</span>
+                        </li>
+                    </ul>
+                    <Link href={`/users/${tweet.user.username}`}
+                        className="flex items-center justify-center bg-[--main] px-3 h-fit py-1 rounded-full
+                        hover:bg-[--main2] duration-200 transition ease-in
+                        "
+                    ><SVG.PLANT_ICON classname="w-4 mr-1"/><span className="text-white text-[11px] whitespace-nowrap">상점 구경가기</span></Link>
+                </div>
+                <div className="pt-6 pb-5">
+                    <div className="text-sm whitespace-pre-wrap">{tweet.tweet}</div>
+                    <div>
+                        {
+                            tweet?.photo
+                            ? <img src={tweet?.photo} alt={tweet.tweet} className="w-full h-32 object-cover mt-4 rounded-md"/>
+                            : null
+                        }
+                    </div>
+                </div>
+                <div className="flex items-center mb-4">
                     <p className="flex items-center mr-3">
                         <SVG.COMMENT_ICON classname="size-5 mr-1"/>
-                        <span className="text-xs text-gray-500">
+                        <span className="text-xs text-[--brown3]">
                             {tweet._count.response}
                         </span>
                     </p>

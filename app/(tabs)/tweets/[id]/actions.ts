@@ -13,6 +13,75 @@ const commentSchema = z.object({
   ),
 });
 
+export async function getTweet(id: number){
+  const tweet = await db.tweet.findUnique({
+      where: { id },
+      include: {
+          user: {
+              select: {
+                  id: true,
+                  created_at: true,
+                  updated_at: true,
+                  username: true,
+                  password: true,
+                  email: true,
+                  bio: true,
+                  avatar: true,
+              }
+          },
+          _count:{
+              select: {
+                  response: true,
+              }
+          }
+      }
+  })
+  return tweet;
+}
+
+
+export async function getLikeStatus(tweetId: number){
+  const session = await getSession()
+  const isLiked = await db.like.findFirst({
+      where: {
+          tweetId,
+          userId: session.id!,
+      }
+  })
+  const likeCount = await db.like.count({
+      where: {
+          tweetId
+      }
+  })
+  return {
+      likeCount, 
+      isLiked: Boolean(isLiked)
+  }
+}
+
+export async function getCommnet(tweetId: number){
+  const comments = await db.response.findMany({
+      where: {tweetId},
+      select: {
+          id: true,
+          comment: true,
+          created_at: true, 
+          user: {
+              select: {
+                  id: true,
+                  avatar: true,
+                  username: true,
+                  email: true,
+              }
+          }
+      }
+  })
+  return comments;
+}
+
+
+
+
 export async function uploadComment(_: unknown, formData: FormData) {
   const data = {
     comment: formData.get("comment"),

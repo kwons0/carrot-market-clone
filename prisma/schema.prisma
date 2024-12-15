@@ -25,6 +25,7 @@ model User {
 model Tweet {
   id          Int      @id @default(autoincrement())
   tweet       String
+  photo       String?
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
 
@@ -59,5 +60,6 @@ model Response {
 
   tweet       Tweet   @relation(fields: [tweetId], references: [id], onDelete: Cascade)
   tweetId     Int
+
 }
 

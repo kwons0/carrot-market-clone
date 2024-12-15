@@ -37,7 +37,7 @@ export default function LikeButton({isLiked, likeCount, tweetId}: LikeButtonProp
                 ? <SVG.HEART_FILL_ICON classname="size-5 mr-1"/>
                 : <SVG.HEART_STOKE_ICON classname="size-5 mr-1"/>
             }
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-[--brown3]">
                 {likeCount}
             </span>
         </button>

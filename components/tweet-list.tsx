@@ -52,15 +52,11 @@ export default function TweetList(
       }
       <div className="flex items-center justify-center mt-4 mb-24 w-full *:text-sm">
         <button onClick={() => onLoadPage("prev")} disabled={isFirstPage}
-          className="disabled:text-gray-400 mx-2"
-        >
-          이전
-        </button>
+          className="disabled:text-[--brown3] mx-2"
+        >이전</button>
         <button onClick={() => onLoadPage("next")} disabled={isLastPage}
-          className="disabled:text-gray-400 mx-2"
-        >
-          다음
-        </button>
+          className="disabled:text-[--brown3] mx-2"
+        >다음</button>
       </div>
     </div>
   )

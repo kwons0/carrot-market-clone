@@ -13,7 +13,7 @@ export default function Button({text}: ButtonProps){
             disabled={pending}
             className={`
                 h-11  w-[100%] block rounded-md
-                ${pending ? 'bg-gray-300 text-gray-400 ' : 'bg-[--main] text-white '}
+                ${pending ? 'bg-[#B9E6CB] text-[#46AA6B] ' : 'bg-[--main] text-white '}
             `}
         >{pending? '로딩 중...' : text}</button>
     )

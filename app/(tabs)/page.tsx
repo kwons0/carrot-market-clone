@@ -11,6 +11,7 @@ async function getInitialTweet(){
       tweet: true,
       created_at: true,
       user: true,
+      photo: true,
       _count: {
         select: {
           response: true,
@@ -32,10 +33,11 @@ export default async function Home() {
   const initialTweets = await getInitialTweet();
 
   return (
-    <div>
+    <div className="p-[1rem]">
       <TweetList initialTweets={initialTweets} />
       <Link href="/tweets/add"
-        className="bg-orange-500 flex items-center justify-center rounded-md fixed bottom-20 right-8 text-white transition-colors py-1 px-2 hover:bg-orange-400">
+        className="bg-[--main] flex items-center justify-center rounded-full 
+          fixed bottom-20 right-8 text-white transition-colors py-2 px-4 hover:bg-[--main2]">
         <PLUS_ICON classname="size-4"/><span className="text-sm">글쓰기</span>
       </Link>
     </div>

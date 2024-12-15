@@ -9,6 +9,7 @@ export async function getMoreTweets(page: number){
             tweet: true,
             created_at: true,
             user: true,
+            photo: true,
             _count: {
                 select: {
                   response: true,
