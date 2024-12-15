@@ -18,11 +18,12 @@ export default function AddCommentForm({tweetId} : AddCommentFormProps){
 
     return(
         <>
-            <form action={action} className="my-2 flex items-center *:text-sm">
+            <form action={action} onSubmit={() => setComment("")} className="my-2 flex items-center *:text-sm">
                 <input type="hidden" name="tweetId" value={tweetId} />
                 <input name="comment" type="text" required placeholder="답글 게시하기" 
                     className="bg-[#E1E1C5] w-full py-1 px-4 rounded-2xl mr-2 placeholder:text-[--brown3] focus:outline-[--main]"
                     onChange={(e) => setComment(e.target.value)} 
+                    value={comment}
                 />
                 <button 
                         disabled={!isCommentValid || pending}

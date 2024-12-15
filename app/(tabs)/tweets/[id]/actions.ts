@@ -2,7 +2,7 @@
 
 import db from "@/lib/db";
 import getSession from "@/lib/session";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
@@ -115,7 +115,7 @@ export async function uploadComment(_: unknown, formData: FormData) {
     },
   });
 
-  redirect(`/tweets/${tweetId}`)
+  revalidatePath(`/tweets/${tweetId}`)
   return newComment;
 }
 

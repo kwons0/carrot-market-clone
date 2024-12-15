@@ -3,7 +3,6 @@ import Image from "next/image";
 import * as SVG from "./svg";
 import getSession from "@/lib/session";
 import AddCommentForm from "./add-comment-form";
-import Link from "next/link";
 
 interface UserProps {
     tweetUser: string;
