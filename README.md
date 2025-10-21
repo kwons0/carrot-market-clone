@@ -11,8 +11,8 @@ Next.js와 TypeScript로 제작된 당근마켓 + 트위터 스타일의 풀스�
 ## ✅ 프로젝트 개요
 
 - 당근마켓과 트위터 기능을 결합해 구현한 중고거래 SNS 웹 서비스
-- 단순 클론이 아닌, “동물의 숲 캐릭터가 거래한다”는 독창적인 세계관 + UI 컨셉 적용
-- Next.js App Router + Prisma + Supabase + Zod + TailwindCSS 활용하여 회원관리, 게시글, 댓글, 좋아요, 검색 기능 구현
+- 단순 클론이 아닌, '동물의 숲 캐릭터가 거래한다'는 세계관 + UI 컨셉 적용
+- Next.js App Router + Prisma + Zod + TailwindCSS 활용하여 회원관리, 게시글, 댓글, 좋아요, 검색 기능 구현
 
 <br/>
 
