@@ -33,6 +33,43 @@ Next.js와 TypeScript로 제작된 당근마켓 + 트위터 스타일의 풀스�
 - 상점 정보 수정
   - 닉네임 중복 확인, 이메일 수정, 비밀번호 재확인, 이미지 미리보기 + 업로드 가능
 
+
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/f9fd3dd3-1426-44cd-b380-b9decc4f6535" width="200px" /><br />
+      <sub>로그인</sub>
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/34cb0fee-1cce-40d7-a56d-f14bb7fdeb3f" width="200px" /><br />
+      <sub>홈 피드</sub>
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/4b7568e6-89e1-4815-bacc-782d65ea2002" width="200px" /><br />
+      <sub>글쓰기 & 이미지 업로드</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/54976755-7aa3-4bb1-923b-9fe4cb6f72c5" width="200px" /><br />
+      <sub>피드 상세(댓글 & 좋아요)</sub>
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/4fc79810-17ef-4fa0-909e-b696e9c9596f" width="200px" /><br />
+      <sub>마이 상점 (프로필 페이지)</sub>
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/312956b2-35b2-4588-976a-f09adb5c46ff" width="200px" /><br />
+      <sub>상점 정보 수정</sub>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+
 <br/>
 
 
